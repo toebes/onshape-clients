@@ -74,6 +74,8 @@ type APIClient struct {
 
 	FoldersApi *FoldersApiService
 
+	GlobalTreeNodesApi *GlobalTreeNodesApiService
+
 	MetadataApi *MetadataApiService
 
 	OpenAPIApi *OpenAPIApiService
@@ -130,6 +132,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ElementsApi = (*ElementsApiService)(&c.common)
 	c.FeatureStudiosApi = (*FeatureStudiosApiService)(&c.common)
 	c.FoldersApi = (*FoldersApiService)(&c.common)
+	c.GlobalTreeNodesApi = (*GlobalTreeNodesApiService)(&c.common)
 	c.MetadataApi = (*MetadataApiService)(&c.common)
 	c.OpenAPIApi = (*OpenAPIApiService)(&c.common)
 	c.PartStudiosApi = (*PartStudiosApiService)(&c.common)
@@ -232,7 +235,6 @@ func parameterToJson(obj interface{}) (string, error) {
 	return string(jsonBuf), err
 }
 
-
 // callAPI do the request.
 func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 	if c.cfg.Debug {
@@ -241,7 +243,7 @@ func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 			return nil, err
 		}
 		log.Printf("\n%s\n", string(dump))
-        }
+	}
 
 	resp, err := c.cfg.HTTPClient.Do(request)
 	if err != nil {

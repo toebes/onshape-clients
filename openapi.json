@@ -27,6 +27,10 @@
   ],
   "tags": [
     {
+      "name": "Global Tree Nodes",
+      "description": "Access to global tree information."
+    },
+    {
       "name": "Applications",
       "description": "Manage application settings."
     },
@@ -6505,6 +6509,30 @@
             ]
           }
         ],
+        "x-BTVisibility": "PRODUCTION"
+      }
+    },
+    "/api/globaltreenodes/": {
+      "get": {
+        "tags": [
+          "Global Tree Nodes"
+        ],
+        "summary": "Get Searchable Trees",
+        "operationId": "globalTreeNodes",
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/vnd.onshape.v1+json;charset=UTF-8;qs=0.1": {
+                "schema": {
+                  "$ref": "#/components/schemas/BTGlobalTreeNodesInfo"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
         "x-BTVisibility": "PRODUCTION"
       }
     },
@@ -22671,6 +22699,39 @@
             }
           }
         ]
+      },
+      "BTGlobalTreeNodesInfo": {
+        "type": "object",
+        "properties": {
+          "permissionSet": {
+            "type": "array",
+            "items": {
+              "title": "Permission Name",
+              "type": "string"
+            }
+          },
+          "pathToRoot": {
+            "type": "string"
+          },
+          "next": {
+            "type": "string"
+          },
+          "href": {
+            "type": "string",
+            "format": "uri"
+          },
+          "items": {
+            "type": "array",
+            "properties": {
+              "empty": {
+                "type": "boolean"
+              }
+            },
+            "items": {
+              "$ref": "#/components/schemas/BTGlobalTreeMagicNodeInfo"
+            }
+          }
+        }
       },
       "BTGlobalTreeMagicNodeInfo": {
         "type": "object",
