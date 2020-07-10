@@ -198,7 +198,26 @@ func TestTreeNodesMagic(t *testing.T) {
 					// We have items, make sure that it isn't empty
 					if len(*items) > 0 {
 						t.Log("Total item Count", len(*items))
-						// Find the item which matches subtype 1 (My Onshape)
+						// See if there are any folders for us to
+						for i := 0; i < len(*items); i++ {
+							isContainer, hasIsContainer := (*items)[i].GetIsContainerOk()
+							folderId, hasFolderId := (*items)[i].GetIdOk()
+
+							if hasIsContainer && *isContainer && hasFolderId && *folderId != "" {
+								// We found a folder, so let's see if we can call the folder api
+								appFolderNode, rawResp, err := client.GlobalTreeNodesApi.GlobalTreeNodesFolder(ctx, *folderId).GetPathToRoot(true).Execute()
+								if err != nil || (rawResp != nil && rawResp.StatusCode >= 300) {
+									t.Error("err: ", err, " -- Response status: ", rawResp)
+								} else {
+									href, hasHref := appFolderNode.GetHrefOk()
+									if hasHref && *href != "" {
+										t.Log("Href of subitem:", *href)
+									} else {
+										t.Error(tt.name + " - Unable to get name of subitem")
+									}
+								}
+							}
+						}
 					} else {
 						t.Error("GlobalTreeNodes - Item List is empty")
 					}
