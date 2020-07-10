@@ -6536,6 +6536,81 @@
         "x-BTVisibility": "PRODUCTION"
       }
     },
+    "/api/globaltreenodes/magic/{mid}": {
+      "get": {
+        "tags": [
+          "Global Tree Nodes"
+        ],
+        "summary": "Get Tree Node List",
+        "operationId": "globalTreeNodesMagic",
+        "parameters": [
+          {
+            "name": "mid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "getPathToRoot",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          },
+          {
+            "name": "sortColumn",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "modifiedAt"
+            }
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "asc"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/vnd.onshape.v1+json;charset=UTF-8;qs=0.1": {
+                "schema": {
+                  "$ref": "#/components/schemas/BTGlobalTreeNodesInfo"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-BTVisibility": "PRODUCTION"
+      }
+    },
     "/api/insertables/d/{did}/latest": {
       "get": {
         "summary": "insertables for a document",
@@ -22711,7 +22786,15 @@
             }
           },
           "pathToRoot": {
-            "type": "string"
+            "type": "array",
+            "properties": {
+              "empty": {
+                "type": "boolean"
+              }
+            },
+            "items": {
+              "$ref": "#/components/schemas/BTGlobalTreeNodeInfo"
+            }
           },
           "next": {
             "type": "string"
