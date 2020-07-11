@@ -23811,6 +23811,7 @@
       },
       "BTMetadataInfo": {
         "type": "object",
+        "description": "Metadata associated with a document or portion there of",
         "properties": {
           "next": {
             "type": "string"
@@ -23830,8 +23831,143 @@
               }
             },
             "items": {
-              "$ref": "#/components/schemas/BTGlobalTreeMagicNodeInfo"
+              "$ref": "#/components/schemas/BTMetadataInfoItems"
             }
+          }
+        }
+      },
+      "BTMetadataInfoItems": {
+        "type": "object",
+        "description": "Individual element description",
+        "properties": {
+          "elementId": {
+            "type": "string"
+          },
+          "elementType": {
+            "description": "Possible values: 0=PARTSTUDIO,1=ASSEMBLY,2=DRAWING,3=FEATURESTUDIO,4=BLOB,5=APPLICATION,6=TABLE,7=BILLOFMATERIALS",
+            "type": "integer",
+            "format": "int32"
+          },
+          "mimeType": {
+            "type": "string"
+          },
+          "href": {
+            "type": "string",
+            "format": "uri"
+          },
+          "@properties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BTMetadataItemsProperties"
+            }
+          },
+          "parts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BTMetadataParts"
+            }
+          }
+        }
+      },
+      "BTMetadataParts": {
+        "type": "object",
+        "description": "Array of parts in a part studio",
+        "properties": {
+          "next": {
+            "type": "string"
+          },
+          "prev": {
+            "type": "string"
+          },
+          "href": {
+            "type": "string",
+            "format": "uri"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BTMetadataPartsItems"
+            }
+          }
+        }
+      },
+      "BTMetadataPartsItems": {
+        "type": "object",
+        "description": "Individual part items metadata",
+        "properties": {
+          "partId": {
+            "type": "string"
+          },
+          "isFlattenedBody": {
+            "type": "boolean"
+          },
+          "isMesh": {
+            "type": "boolean"
+          },
+          "partType": {
+            "type": "string"
+          },
+          "href": {
+            "type": "string",
+            "format": "uri"
+          },
+          "properties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BTMetadataItemsProperties"
+            }
+          }
+        }
+      },
+      "BTMetadataItemsProperties": {
+        "type": "object",
+        "description": "This is the same as BTWorkflowPropertyInfo with the addition of the multivalued field and dropping the dirty, initialValue, isApproverProperty and is NotifierProperty fields",
+        "properties": {
+          "defaultValue": {
+            "type": "object"
+          },
+          "editable": {
+            "type": "boolean"
+          },
+          "editableInUi": {
+            "type": "boolean"
+          },
+          "enumValues": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BTMetadataEnumValueInfo"
+            }
+          },
+          "multivalued": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "propertyId": {
+            "type": "string"
+          },
+          "propertySource": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "schemaId": {
+            "type": "string"
+          },
+          "uiHints": {
+            "$ref": "#/components/schemas/BTMetadataPropertyUiHintsInfo"
+          },
+          "validator": {
+            "$ref": "#/components/schemas/BTMetadataPropertyValidatorInfo"
+          },
+          "value": {
+            "type": "object"
+          },
+          "valueType": {
+            "type": "string"
           }
         }
       },
