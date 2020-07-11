@@ -6624,11 +6624,11 @@
         ],
         "summary": "Get Tree Node List",
         "operationId": "globalTreeNodesMagic",
-        "description": "Returns a list of all the elements in one of several globally defined lists.",
+        "description": "Returns a list of all the elements in one of several globally defined lists. Known values include:\n| MAGIC ID | TITLE | USAGE |\n|-|-|-|\n| 0 | Recently Opened | Most recently opened documents |\n| 1 | My Onshape | Root folder and contents |\n| 2 | Created by Me | Documents created by the logged in user |\n| 3 | Public | All public documents (a very long list) |\n| 4 | Trash | Trashcan for the logged in user |\n| 5 | Tutorials & Samples | Desktop Tutorials |\n| 6 | FeatureScript samples |  FeatureScript samples (found when you select Other documents while adding a custom feature) |\n| 7 | Community spotlight | Community spotlight (found when you select Other documents while adding a custom feature) |\n| 8 | Tutorials | IOS Tutorials |\n| 9 | Tutorials | Android Tutorials |\n| 10 | Labels | Labels created by the user  |\n| 11 | Teams | Teams that the user is connected to |\n| 12 | Shared with me | Documents shared with the user |\n| 13 | Cloud Storage | Visual list of cloud accounts associated with the logged in user |\n| 14 | Custom table samples | Custom table samples (found when you select Other documents while adding a custom table) |\n",
         "parameters": [
           {
             "name": "mid",
-            "description": "Magic ID of list to return. Known values include:\n| MAGIC ID | TITLE | USAGE |\n|-|-|-|\n| 0 | Recently Opened | Most recently opened documents |\n| 1 | My Onshape | Root folder and contents |\n| 2 | Created by Me | Documents created by the logged in user |\n| 3 | Public | All public documents (a very long list) |\n| 4 | Trash | Trashcan for the logged in user |\n| 5 | Tutorials & Samples | Desktop Tutorials |\n| 6 | FeatureScript samples |  FeatureScript samples (found when you select Other documents while adding a custom feature) |\n| 7 | Community spotlight | Community spotlight (found when you select Other documents while adding a custom feature) |\n| 8 | Tutorials | IOS Tutorials |\n| 9 | Tutorials | Android Tutorials |\n| 10 | Labels | Labels created by the user  |\n| 11 | Teams | Teams that the user is connected to |\n| 12 | Shared with me | Documents shared with the user |\n| 13 | Cloud Storage | Visual list of cloud accounts associated with the logged in user |\n| 14 | Custom table samples | Custom table samples (found when you select Other documents while adding a custom table) |\n",
+            "description": "Magic ID of list to return.",
             "in": "path",
             "required": true,
             "schema": {
