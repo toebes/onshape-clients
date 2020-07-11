@@ -6959,7 +6959,11 @@
           "default": {
             "description": "default response",
             "content": {
-              "application/vnd.onshape.v1+json;charset=UTF-8;qs=0.1": {}
+              "application/vnd.onshape.v1+json;charset=UTF-8;qs=0.1": {
+                "schema": {
+                  "$ref": "#/components/schemas/BTMetadataInfo"
+                }
+              }
             }
           }
         },
@@ -7056,7 +7060,11 @@
           "default": {
             "description": "default response",
             "content": {
-              "application/vnd.onshape.v1+json;charset=UTF-8;qs=0.1": {}
+              "application/vnd.onshape.v1+json;charset=UTF-8;qs=0.1": {
+                "schema": {
+                  "$ref": "#/components/schemas/BTMetadataInfo"
+                }
+              }
             }
           }
         },
@@ -7219,7 +7227,11 @@
           "default": {
             "description": "default response",
             "content": {
-              "application/vnd.onshape.v1+json;charset=UTF-8;qs=0.1": {}
+              "application/vnd.onshape.v1+json;charset=UTF-8;qs=0.1": {
+                "schema": {
+                  "$ref": "#/components/schemas/BTMetadataInfo"
+                }
+              }
             }
           }
         },
@@ -7316,7 +7328,11 @@
           "default": {
             "description": "default response",
             "content": {
-              "application/vnd.onshape.v1+json;charset=UTF-8;qs=0.1": {}
+              "application/vnd.onshape.v1+json;charset=UTF-8;qs=0.1": {
+                "schema": {
+                  "$ref": "#/components/schemas/BTMetadataInfo"
+                }
+              }
             }
           }
         },
@@ -7406,7 +7422,11 @@
           "default": {
             "description": "default response",
             "content": {
-              "application/vnd.onshape.v1+json;charset=UTF-8;qs=0.1": {}
+              "application/vnd.onshape.v1+json;charset=UTF-8;qs=0.1": {
+                "schema": {
+                  "$ref": "#/components/schemas/BTMetadataInfo"
+                }
+              }
             }
           }
         },
@@ -7488,7 +7508,11 @@
           "default": {
             "description": "default response",
             "content": {
-              "application/vnd.onshape.v1+json;charset=UTF-8;qs=0.1": {}
+              "application/vnd.onshape.v1+json;charset=UTF-8;qs=0.1": {
+                "schema": {
+                  "$ref": "#/components/schemas/BTMetadataInfo"
+                }
+              }
             }
           }
         },
@@ -7547,7 +7571,11 @@
           "default": {
             "description": "default response",
             "content": {
-              "application/vnd.onshape.v1+json;charset=UTF-8;qs=0.1": {}
+              "application/vnd.onshape.v1+json;charset=UTF-8;qs=0.1": {
+                "schema": {
+                  "$ref": "#/components/schemas/BTMetadataInfo"
+                }
+              }
             }
           }
         },
@@ -23778,6 +23806,32 @@
           },
           "version": {
             "type": "string"
+          }
+        }
+      },
+      "BTMetadataInfo": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string"
+          },
+          "prev": {
+            "type": "string"
+          },
+          "href": {
+            "type": "string",
+            "format": "uri"
+          },
+          "items": {
+            "type": "array",
+            "properties": {
+              "empty": {
+                "type": "boolean"
+              }
+            },
+            "items": {
+              "$ref": "#/components/schemas/BTGlobalTreeMagicNodeInfo"
+            }
           }
         }
       },
