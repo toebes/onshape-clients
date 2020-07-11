@@ -10,3 +10,9 @@ node_modules
 **.env
 
 **build/**
+cli/cli.egg-info/dependency_links.txt
+cli/cli.egg-info/entry_points.txt
+cli/cli.egg-info/PKG-INFO
+cli/cli.egg-info/requires.txt
+cli/cli.egg-info/SOURCES.txt
+cli/cli.egg-info/top_level.txt
