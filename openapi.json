@@ -22962,6 +22962,9 @@
           "createdBy": {
             "$ref": "#/components/schemas/BTUserBasicSummaryInfo"
           },
+          "defaultWorkspace": {
+            "$ref": "#/components/schemas/BTWorkspaceInfo"
+          },
           "description": {
             "type": "string"
           },
@@ -23855,7 +23858,7 @@
             "type": "string",
             "format": "uri"
           },
-          "@properties": {
+          "properties": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/BTMetadataItemsProperties"
