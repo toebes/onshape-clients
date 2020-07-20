@@ -23925,52 +23925,36 @@
       "BTMetadataItemsProperties": {
         "type": "object",
         "description": "This is the same as BTWorkflowPropertyInfo with the addition of the multivalued field and dropping the dirty, initialValue, isApproverProperty and is NotifierProperty fields",
-        "properties": {
-          "defaultValue": {
-            "type": "object"
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/BTMetadataCommonBool"
           },
-          "editable": {
-            "type": "boolean"
+          {
+            "$ref": "#/components/schemas/BTMetadataCommonCategory"
           },
-          "editableInUi": {
-            "type": "boolean"
+          {
+            "$ref": "#/components/schemas/BTMetadataCommonDate"
           },
-          "enumValues": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/BTMetadataEnumValueInfo"
-            }
+          {
+            "$ref": "#/components/schemas/BTMetadataCommonEnum"
           },
-          "multivalued": {
-            "type": "boolean"
+          {
+            "$ref": "#/components/schemas/BTMetadataCommonString"
           },
-          "name": {
-            "type": "string"
-          },
-          "propertyId": {
-            "type": "string"
-          },
-          "propertySource": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "required": {
-            "type": "boolean"
-          },
-          "schemaId": {
-            "type": "string"
-          },
-          "uiHints": {
-            "$ref": "#/components/schemas/BTMetadataPropertyUiHintsInfo"
-          },
-          "validator": {
-            "$ref": "#/components/schemas/BTMetadataPropertyValidatorInfo"
-          },
-          "value": {
-            "type": "object"
-          },
-          "valueType": {
-            "type": "string"
+          {
+            "$ref": "#/components/schemas/BTMetadataCommonUser"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "valueType",
+          "required": true,
+          "mapping": {
+            "BOOL": "#/components/schemas/BTMetadataCommonBool",
+            "CATEGORY": "#/components/schemas/BTMetadataCommonCategory",
+            "DATE": "#/components/schemas/BTMetadataCommonDate",
+            "ENUM": "#/components/schemas/BTMetadataCommonEnum",
+            "STRING": "#/components/schemas/BTMetadataCommonString",
+            "USER": "#/components/schemas/BTMetadataCommonUser"
           }
         }
       },
@@ -26313,55 +26297,36 @@
       },
       "BTMetadataPropertyInfo": {
         "type": "object",
-        "properties": {
-          "defaultValue": {
-            "type": "object"
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/BTMetadataCommonBool"
           },
-          "dirty": {
-            "type": "boolean"
+          {
+            "$ref": "#/components/schemas/BTMetadataCommonCategory"
           },
-          "editable": {
-            "type": "boolean"
+          {
+            "$ref": "#/components/schemas/BTMetadataCommonDate"
           },
-          "editableInUi": {
-            "type": "boolean"
+          {
+            "$ref": "#/components/schemas/BTMetadataCommonEnum"
           },
-          "enumValues": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/BTMetadataEnumValueInfo"
-            }
+          {
+            "$ref": "#/components/schemas/BTMetadataCommonString"
           },
-          "initialValue": {
-            "type": "object"
-          },
-          "name": {
-            "type": "string"
-          },
-          "propertyId": {
-            "type": "string"
-          },
-          "propertySource": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "required": {
-            "type": "boolean"
-          },
-          "schemaId": {
-            "type": "string"
-          },
-          "uiHints": {
-            "$ref": "#/components/schemas/BTMetadataPropertyUiHintsInfo"
-          },
-          "validator": {
-            "$ref": "#/components/schemas/BTMetadataPropertyValidatorInfo"
-          },
-          "value": {
-            "type": "object"
-          },
-          "valueType": {
-            "type": "string"
+          {
+            "$ref": "#/components/schemas/BTMetadataCommonUser"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "valueType",
+          "required": true,
+          "mapping": {
+            "BOOL": "#/components/schemas/BTMetadataCommonBool",
+            "CATEGORY": "#/components/schemas/BTMetadataCommonCategory",
+            "DATE": "#/components/schemas/BTMetadataCommonDate",
+            "ENUM": "#/components/schemas/BTMetadataCommonEnum",
+            "STRING": "#/components/schemas/BTMetadataCommonString",
+            "USER": "#/components/schemas/BTMetadataCommonUser"
           }
         }
       },
@@ -33826,11 +33791,14 @@
           }
         }
       },
-      "BTWorkflowPropertyInfo": {
+      "BTMetadataCommonBool": {
         "type": "object",
+        "required": [
+          "valueType"
+        ],
         "properties": {
           "defaultValue": {
-            "type": "object"
+            "type": "string"
           },
           "dirty": {
             "type": "boolean"
@@ -33845,7 +33813,8 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/BTMetadataEnumValueInfo"
-            }
+            },
+            "nullable": true
           },
           "initialValue": {
             "type": "object"
@@ -33854,6 +33823,9 @@
             "type": "boolean"
           },
           "isNotifierProperty": {
+            "type": "boolean"
+          },
+          "multivalued": {
             "type": "boolean"
           },
           "name": {
@@ -33879,10 +33851,412 @@
             "$ref": "#/components/schemas/BTMetadataPropertyValidatorInfo"
           },
           "value": {
-            "type": "object"
+            "type": "boolean"
           },
           "valueType": {
             "type": "string"
+          }
+        }
+      },
+      "BTMetadataCommonCategory": {
+        "type": "object",
+        "required": [
+          "valueType"
+        ],
+        "properties": {
+          "defaultValue": {
+            "type": "string"
+          },
+          "dirty": {
+            "type": "boolean"
+          },
+          "editable": {
+            "type": "boolean"
+          },
+          "editableInUi": {
+            "type": "boolean"
+          },
+          "enumValues": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BTMetadataEnumValueInfo"
+            }
+          },
+          "initialValue": {
+            "type": "object"
+          },
+          "isApproverProperty": {
+            "type": "boolean"
+          },
+          "isNotifierProperty": {
+            "type": "boolean"
+          },
+          "multivalued": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "propertyId": {
+            "type": "string"
+          },
+          "propertySource": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "schemaId": {
+            "type": "string"
+          },
+          "uiHints": {
+            "$ref": "#/components/schemas/BTMetadataPropertyUiHintsInfo"
+          },
+          "validator": {
+            "$ref": "#/components/schemas/BTMetadataPropertyValidatorInfo"
+          },
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BTMetadataCategoryIDs"
+            }
+          },
+          "valueType": {
+            "type": "string"
+          }
+        }
+      },
+      "BTMetadataCategoryIDs": {
+        "type": "object",
+        "description": "Category IDs returned as a metadata value",
+        "properties": {
+          "memberCategoryIds": {
+            "type": "object",
+            "description": "TODO: Not sure the type of this."
+          },
+          "memberCategories": {
+            "type": "object",
+            "description": "TODO: Not sure the type of this."
+          },
+          "description": {
+            "type": "string"
+          },
+          "ownerType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ownerId": {
+            "type": "string"
+          },
+          "publishState": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "objectTypes": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "defaultObjectType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "href": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "BTMetadataCommonDate": {
+        "type": "object",
+        "required": [
+          "valueType"
+        ],
+        "properties": {
+          "defaultValue": {
+            "type": "string"
+          },
+          "dirty": {
+            "type": "boolean"
+          },
+          "editable": {
+            "type": "boolean"
+          },
+          "editableInUi": {
+            "type": "boolean"
+          },
+          "initialValue": {
+            "type": "object"
+          },
+          "isApproverProperty": {
+            "type": "boolean"
+          },
+          "isNotifierProperty": {
+            "type": "boolean"
+          },
+          "multivalued": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "propertyId": {
+            "type": "string"
+          },
+          "propertySource": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "schemaId": {
+            "type": "string"
+          },
+          "uiHints": {
+            "$ref": "#/components/schemas/BTMetadataPropertyUiHintsInfo"
+          },
+          "validator": {
+            "$ref": "#/components/schemas/BTMetadataPropertyValidatorInfo"
+          },
+          "value": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "valueType": {
+            "type": "string"
+          }
+        }
+      },
+      "BTMetadataCommonEnum": {
+        "type": "object",
+        "required": [
+          "valueType"
+        ],
+        "properties": {
+          "defaultValue": {
+            "type": "string"
+          },
+          "dirty": {
+            "type": "boolean"
+          },
+          "editable": {
+            "type": "boolean"
+          },
+          "editableInUi": {
+            "type": "boolean"
+          },
+          "enumValues": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BTMetadataEnumValueInfo"
+            }
+          },
+          "initialValue": {
+            "type": "object"
+          },
+          "isApproverProperty": {
+            "type": "boolean"
+          },
+          "isNotifierProperty": {
+            "type": "boolean"
+          },
+          "multivalued": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "propertyId": {
+            "type": "string"
+          },
+          "propertySource": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "schemaId": {
+            "type": "string"
+          },
+          "uiHints": {
+            "$ref": "#/components/schemas/BTMetadataPropertyUiHintsInfo"
+          },
+          "validator": {
+            "$ref": "#/components/schemas/BTMetadataPropertyValidatorInfo"
+          },
+          "value": {
+            "type": "string"
+          },
+          "valueType": {
+            "type": "string"
+          }
+        }
+      },
+      "BTMetadataCommonString": {
+        "type": "object",
+        "required": [
+          "valueType"
+        ],
+        "properties": {
+          "defaultValue": {
+            "type": "string"
+          },
+          "dirty": {
+            "type": "boolean"
+          },
+          "editable": {
+            "type": "boolean"
+          },
+          "editableInUi": {
+            "type": "boolean"
+          },
+          "initialValue": {
+            "type": "object"
+          },
+          "isApproverProperty": {
+            "type": "boolean"
+          },
+          "isNotifierProperty": {
+            "type": "boolean"
+          },
+          "multivalued": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "propertyId": {
+            "type": "string"
+          },
+          "propertySource": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "schemaId": {
+            "type": "string"
+          },
+          "uiHints": {
+            "$ref": "#/components/schemas/BTMetadataPropertyUiHintsInfo"
+          },
+          "validator": {
+            "$ref": "#/components/schemas/BTMetadataPropertyValidatorInfo"
+          },
+          "value": {
+            "type": "string"
+          },
+          "valueType": {
+            "type": "string"
+          }
+        }
+      },
+      "BTMetadataCommonUser": {
+        "type": "object",
+        "required": [
+          "valueType"
+        ],
+        "properties": {
+          "defaultValue": {
+            "type": "string"
+          },
+          "dirty": {
+            "type": "boolean"
+          },
+          "editable": {
+            "type": "boolean"
+          },
+          "editableInUi": {
+            "type": "boolean"
+          },
+          "initialValue": {
+            "type": "object"
+          },
+          "isApproverProperty": {
+            "type": "boolean"
+          },
+          "isNotifierProperty": {
+            "type": "boolean"
+          },
+          "multivalued": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "propertyId": {
+            "type": "string"
+          },
+          "propertySource": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "schemaId": {
+            "type": "string"
+          },
+          "uiHints": {
+            "$ref": "#/components/schemas/BTMetadataPropertyUiHintsInfo"
+          },
+          "validator": {
+            "$ref": "#/components/schemas/BTMetadataPropertyValidatorInfo"
+          },
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BTUserSummaryInfo"
+            }
+          },
+          "valueType": {
+            "type": "string"
+          }
+        }
+      },
+      "BTWorkflowPropertyInfo": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/BTMetadataCommonBool"
+          },
+          {
+            "$ref": "#/components/schemas/BTMetadataCommonCategory"
+          },
+          {
+            "$ref": "#/components/schemas/BTMetadataCommonDate"
+          },
+          {
+            "$ref": "#/components/schemas/BTMetadataCommonEnum"
+          },
+          {
+            "$ref": "#/components/schemas/BTMetadataCommonString"
+          },
+          {
+            "$ref": "#/components/schemas/BTMetadataCommonUser"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "valueType",
+          "required": true,
+          "mapping": {
+            "BOOL": "#/components/schemas/BTMetadataCommonBool",
+            "CATEGORY": "#/components/schemas/BTMetadataCommonCategory",
+            "DATE": "#/components/schemas/BTMetadataCommonDate",
+            "ENUM": "#/components/schemas/BTMetadataCommonEnum",
+            "STRING": "#/components/schemas/BTMetadataCommonString",
+            "USER": "#/components/schemas/BTMetadataCommonUser"
           }
         }
       },
