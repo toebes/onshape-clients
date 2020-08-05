@@ -23865,10 +23865,7 @@
             }
           },
           "parts": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/BTMetadataParts"
-            }
+            "$ref": "#/components/schemas/BTMetadataParts"
           }
         }
       },
@@ -23933,10 +23930,16 @@
             "$ref": "#/components/schemas/BTMetadataCommonCategory"
           },
           {
+            "$ref": "#/components/schemas/BTMetadataCommonComputed"
+          },
+          {
             "$ref": "#/components/schemas/BTMetadataCommonDate"
           },
           {
             "$ref": "#/components/schemas/BTMetadataCommonEnum"
+          },
+          {
+            "$ref": "#/components/schemas/BTMetadataCommonObject"
           },
           {
             "$ref": "#/components/schemas/BTMetadataCommonString"
@@ -23951,8 +23954,10 @@
           "mapping": {
             "BOOL": "#/components/schemas/BTMetadataCommonBool",
             "CATEGORY": "#/components/schemas/BTMetadataCommonCategory",
+            "COMPUTED": "#/components/schemas/BTMetadataCommonComputed",
             "DATE": "#/components/schemas/BTMetadataCommonDate",
             "ENUM": "#/components/schemas/BTMetadataCommonEnum",
+            "OBJECT": "#/components/schemas/BTMetadataCommonObject",
             "STRING": "#/components/schemas/BTMetadataCommonString",
             "USER": "#/components/schemas/BTMetadataCommonUser"
           }
@@ -26305,10 +26310,16 @@
             "$ref": "#/components/schemas/BTMetadataCommonCategory"
           },
           {
+            "$ref": "#/components/schemas/BTMetadataCommonComputed"
+          },
+          {
             "$ref": "#/components/schemas/BTMetadataCommonDate"
           },
           {
             "$ref": "#/components/schemas/BTMetadataCommonEnum"
+          },
+          {
+            "$ref": "#/components/schemas/BTMetadataCommonObject"
           },
           {
             "$ref": "#/components/schemas/BTMetadataCommonString"
@@ -26323,8 +26334,10 @@
           "mapping": {
             "BOOL": "#/components/schemas/BTMetadataCommonBool",
             "CATEGORY": "#/components/schemas/BTMetadataCommonCategory",
+            "COMPUTED": "#/components/schemas/BTMetadataCommonComputed",
             "DATE": "#/components/schemas/BTMetadataCommonDate",
             "ENUM": "#/components/schemas/BTMetadataCommonEnum",
+            "OBJECT": "#/components/schemas/BTMetadataCommonObject",
             "STRING": "#/components/schemas/BTMetadataCommonString",
             "USER": "#/components/schemas/BTMetadataCommonUser"
           }
@@ -33927,6 +33940,72 @@
           }
         }
       },
+      "BTMetadataCommonComputed": {
+        "type": "object",
+        "required": [
+          "valueType"
+        ],
+        "properties": {
+          "defaultValue": {
+            "type": "string"
+          },
+          "dirty": {
+            "type": "boolean"
+          },
+          "editable": {
+            "type": "boolean"
+          },
+          "editableInUi": {
+            "type": "boolean"
+          },
+          "enumValues": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BTMetadataEnumValueInfo"
+            }
+          },
+          "initialValue": {
+            "type": "object"
+          },
+          "isApproverProperty": {
+            "type": "boolean"
+          },
+          "isNotifierProperty": {
+            "type": "boolean"
+          },
+          "multivalued": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "propertyId": {
+            "type": "string"
+          },
+          "propertySource": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "schemaId": {
+            "type": "string"
+          },
+          "uiHints": {
+            "$ref": "#/components/schemas/BTMetadataPropertyUiHintsInfo"
+          },
+          "validator": {
+            "$ref": "#/components/schemas/BTMetadataPropertyValidatorInfo"
+          },
+          "value": {
+            "type": "object"
+          },
+          "valueType": {
+            "type": "string"
+          }
+        }
+      },
       "BTMetadataCategoryIDs": {
         "type": "object",
         "description": "Category IDs returned as a metadata value",
@@ -34102,6 +34181,72 @@
           }
         }
       },
+      "BTMetadataCommonObject": {
+        "type": "object",
+        "required": [
+          "valueType"
+        ],
+        "properties": {
+          "defaultValue": {
+            "type": "string"
+          },
+          "dirty": {
+            "type": "boolean"
+          },
+          "editable": {
+            "type": "boolean"
+          },
+          "editableInUi": {
+            "type": "boolean"
+          },
+          "enumValues": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BTMetadataEnumValueInfo"
+            }
+          },
+          "initialValue": {
+            "type": "object"
+          },
+          "isApproverProperty": {
+            "type": "boolean"
+          },
+          "isNotifierProperty": {
+            "type": "boolean"
+          },
+          "multivalued": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "propertyId": {
+            "type": "string"
+          },
+          "propertySource": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "schemaId": {
+            "type": "string"
+          },
+          "uiHints": {
+            "$ref": "#/components/schemas/BTMetadataPropertyUiHintsInfo"
+          },
+          "validator": {
+            "$ref": "#/components/schemas/BTMetadataPropertyValidatorInfo"
+          },
+          "value": {
+            "type": "object"
+          },
+          "valueType": {
+            "type": "string"
+          }
+        }
+      },
       "BTMetadataCommonString": {
         "type": "object",
         "required": [
@@ -34235,10 +34380,16 @@
             "$ref": "#/components/schemas/BTMetadataCommonCategory"
           },
           {
+            "$ref": "#/components/schemas/BTMetadataCommonComputed"
+          },
+          {
             "$ref": "#/components/schemas/BTMetadataCommonDate"
           },
           {
             "$ref": "#/components/schemas/BTMetadataCommonEnum"
+          },
+          {
+            "$ref": "#/components/schemas/BTMetadataCommonObject"
           },
           {
             "$ref": "#/components/schemas/BTMetadataCommonString"
@@ -34253,8 +34404,10 @@
           "mapping": {
             "BOOL": "#/components/schemas/BTMetadataCommonBool",
             "CATEGORY": "#/components/schemas/BTMetadataCommonCategory",
+            "COMPUTED": "#/components/schemas/BTMetadataCommonComputed",
             "DATE": "#/components/schemas/BTMetadataCommonDate",
             "ENUM": "#/components/schemas/BTMetadataCommonEnum",
+            "OBJECT": "#/components/schemas/BTMetadataCommonObject",
             "STRING": "#/components/schemas/BTMetadataCommonString",
             "USER": "#/components/schemas/BTMetadataCommonUser"
           }
